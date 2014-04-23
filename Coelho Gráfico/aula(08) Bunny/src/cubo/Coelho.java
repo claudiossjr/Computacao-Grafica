@@ -32,12 +32,12 @@ public class Coelho {
     {
         
         try {
-            in = new Scanner(new File("bunny_tri.off"));
+            in = new Scanner(new File("seashell.off"));
             
             System.out.println(in.nextLine()); 
             this.nverts = in.nextInt();
             this.nfaces = in.nextInt();
-            matOfTriangles = new int[nfaces][3];
+            matOfTriangles = new int[nfaces][5];
         
             positions = new ArrayList<>(nverts);
             normals = new ArrayList<>(nverts);
@@ -46,19 +46,30 @@ public class Coelho {
                 float x = Float.parseFloat(in.next());
                 float y = Float.parseFloat(in.next());
                 float z = Float.parseFloat(in.next());
-                float nx = Float.parseFloat(in.next());
-                float ny = Float.parseFloat(in.next());
-                float nz = Float.parseFloat(in.next());
-                //System.out.println(x+" "+y+" "+z+" "+nx+" "+ny+" "+nz+" ");
+                float nx = x;//Float.parseFloat(in.next());
+                float ny = y;//Float.parseFloat(in.next());
+                float nz = z;//Float.parseFloat(in.next());
                 positions.add(new Vector4f(x,y,z,1.0f) );
                 normals.add(new Vector4f(nx,ny,nz,0.0f) );
             }
             
             for (int i = 0; i < nfaces; i++) {
-                int j = in.nextInt();
                 matOfTriangles[i][0] = in.nextInt(); 
-                matOfTriangles[i][1] = in.nextInt();
+                matOfTriangles[i][1] = in.nextInt(); 
                 matOfTriangles[i][2] = in.nextInt();
+                matOfTriangles[i][3] = in.nextInt();
+                if(matOfTriangles[i][0] == 4)
+                {
+                    matOfTriangles[i][4] = in.nextInt();
+                }
+                
+                if(matOfTriangles[i][0] == 4)
+                {
+                    //System.out.println(matOfTriangles[i][0]+" "+matOfTriangles[i][1]+" "+matOfTriangles[i][2]+" "+matOfTriangles[i][3]+" "+matOfTriangles[i][4]);
+                }else{
+                    //System.out.println(matOfTriangles[i][0]+" "+matOfTriangles[i][1]+" "+matOfTriangles[i][2]+" "+matOfTriangles[i][3]);
+                }
+                
             }
             
             in.close();

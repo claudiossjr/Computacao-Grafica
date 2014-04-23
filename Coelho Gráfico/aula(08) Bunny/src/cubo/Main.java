@@ -88,9 +88,9 @@ public class Main {
         // Model Matrix setup
         translationMatrix.m41 = 0.8f;
 
-        scaleMatrix.m11 = 1.0f;
-        scaleMatrix.m22 = 1.0f;
-        scaleMatrix.m33 = 1.0f;
+        scaleMatrix.m11 = 2.0f;
+        scaleMatrix.m22 = 2.0f;
+        scaleMatrix.m33 = 2.0f;
                         
         while (Display.isCloseRequested() == false) {
 
@@ -113,7 +113,7 @@ public class Main {
             modelViewMatrix.multiply(rotationMatrixY);
             //modelViewMatrix.multiply(translationMatrix);
             //modelViewMatrix.multiply(rotationMatrixZ);
-            //modelViewMatrix.multiply(scaleMatrix);
+            modelViewMatrix.multiply(scaleMatrix);
 
             normalMatrix.setTo(modelViewMatrix);
             normalMatrix.inverse();

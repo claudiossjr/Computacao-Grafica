@@ -138,7 +138,13 @@ public class CubeGL extends Coelho implements ObjectGL {
         
         /**/
         for (int i = 0; i < nfaces; i++) {
-            buildTriangles(matOfTriangles[i][0], matOfTriangles[i][1], matOfTriangles[i][2]);
+            if(matOfTriangles[i][0] == 3)
+            {
+                buildTriangles(matOfTriangles[i][1], matOfTriangles[i][2], matOfTriangles[i][3]);
+            }
+            else{
+                buildQuad(matOfTriangles[i][1], matOfTriangles[i][2], matOfTriangles[i][3], matOfTriangles[i][4]);
+            }
             //System.out.println(matOfTriangles[i][0]+" "+matOfTriangles[i][1]+" "+matOfTriangles[i][2]);
         }
         /**/
